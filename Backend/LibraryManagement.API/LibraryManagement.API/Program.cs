@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using LibraryManagement.API.Models;
+using LibraryManagement.API.Data; 
+
 
 namespace LibraryManagement.API
 {
@@ -12,6 +16,10 @@ namespace LibraryManagement.API
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            // Configurarea bazei de date SQL Server
+            builder.Services.AddDbContext<LibraryContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
