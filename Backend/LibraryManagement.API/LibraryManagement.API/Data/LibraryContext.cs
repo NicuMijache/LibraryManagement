@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using LibraryManagement.API.Models; 
+using LibraryManagement.API.Models;
 
-namespace LibraryManagement.API.Data 
+namespace LibraryManagement.API.Data
 {
     public class LibraryContext : DbContext
     {
@@ -9,9 +9,9 @@ namespace LibraryManagement.API.Data
         {
         }
 
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Loan> Loans { get; set; }
+        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Author> Authors { get; set; } = null!;
+        public DbSet<Book> Books { get; set; } = null!;
+        public DbSet<Loan> Loans { get; set; } = null!;
     }
 }

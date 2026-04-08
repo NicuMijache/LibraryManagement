@@ -1,6 +1,7 @@
-using Microsoft.EntityFrameworkCore;
+﻿using LibraryManagement.API.Data; 
 using LibraryManagement.API.Models;
-using LibraryManagement.API.Data; 
+using LibraryManagement.API.Services;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace LibraryManagement.API
@@ -20,6 +21,9 @@ namespace LibraryManagement.API
             // Configurarea bazei de date SQL Server
             builder.Services.AddDbContext<LibraryContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // Spunem aplicației: "Când cineva cere un ILoanService, dă-i un LoanService"
+            builder.Services.AddScoped<ILoanService, LoanService>();
 
             var app = builder.Build();
 
